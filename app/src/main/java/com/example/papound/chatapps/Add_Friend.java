@@ -133,7 +133,7 @@ public class Add_Friend extends Activity implements OnClickListener{
                 }else if(success == 0) {
                     Log.d("Adding Friends Failure!", json.getString(TAG_MESSAGE));
                     return json.getString(TAG_MESSAGE);
-                }else{
+                }else if(success == 2) {
                     Log.d("You guys are already friends!", json.getString(TAG_MESSAGE));
                     return json.getString(TAG_MESSAGE);
 
