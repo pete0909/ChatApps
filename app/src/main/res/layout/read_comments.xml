@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/black_button"
-            android:onClick="addComment"
+            android:onClick="onClick"
             android:text="@string/post_comment" />
 
         <LinearLayout
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:background="@drawable/black_button"
-                android:onClick="friendAdd"
+                android:onClick="onClick"
                 android:text="Add Friend"
 
 

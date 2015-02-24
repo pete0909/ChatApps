@@ -19,7 +19,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.content.Intent;
 
-public class ReadComments extends ListActivity {
+public class ReadComments extends ListActivity implements View.OnClickListener {
 
 	// Progress Dialog
 	private ProgressDialog pDialog;
@@ -77,22 +77,51 @@ public class ReadComments extends ListActivity {
 		new LoadComments().execute();
 	}
 
-	public void addComment(View v) {
-		Intent i = new Intent(ReadComments.this, AddComment.class);
-		startActivity(i);
-	}
+	//public void addComment(View v) {
+
+
+	//}
+
+    public void onClick(View v){
+        int id = v.getId();
+
+
+        switch(id) {
+            case R.id.post_comment:
+                Intent i = new Intent(ReadComments.this, AddComment.class);
+                startActivity(i);
+                break;
+
+            case R.id.add_friend_btn:
+                Intent a = new Intent(ReadComments.this, Add_Friend.class);
+                //a.putExtra("username", login.user_name_ori);
+                a.putExtra("username", user_name_final);
+                startActivity(a);
+                break;
+
+
+        }
+    }
+
+
 
 
     //Intent x = getParentActivityIntent();
     //String user_name = x.getStringExtra("username");
 
-    public void friendAdd(View v) {
+    //public void friendAdd(View v) {
 
-        Intent a = new Intent(ReadComments.this, Add_Friend.class);
-        //a.putExtra("username", login.user_name_ori);
-        a.putExtra("username", user_name_final);
-        startActivity(a);
-    }
+
+
+
+
+    //}
+
+
+
+
+
+
 
 
 

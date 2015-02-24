@@ -136,7 +136,9 @@ public class Add_Friend extends Activity implements OnClickListener{
                 }else if(success == 2) {
                     Log.d("You guys are already friends!", json.getString(TAG_MESSAGE));
                     return json.getString(TAG_MESSAGE);
-
+                }else if(success == 3) {
+                    Log.d("You guys are alike 555!", json.getString(TAG_MESSAGE));
+                    return json.getString(TAG_MESSAGE);
 
                 }
             } catch (JSONException e) {

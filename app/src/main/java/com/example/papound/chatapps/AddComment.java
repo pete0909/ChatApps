@@ -66,7 +66,8 @@ public class AddComment extends Activity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-				new PostComment().execute();
+
+                    new PostComment().execute();
 	}
 	
 	
