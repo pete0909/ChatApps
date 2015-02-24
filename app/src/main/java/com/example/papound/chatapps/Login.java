@@ -13,25 +13,27 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class Login extends Activity implements OnClickListener {
 
+	// testing on Emulator:
+	private static final String LOGIN_URL = "http://128.199.117.135/webservice/login.php";
+	// JSON element ids from repsonse of php script:
+	private static final String TAG_SUCCESS = "success";
+	private static final String TAG_MESSAGE = "message";
     public String user_name_ori;
-    private EditText user, pass;
-	private Button mSubmit, mRegister;
-
-	// Progress Dialog
-	private ProgressDialog pDialog;
-
 	// JSON parser class
 	JSONParser jsonParser = new JSONParser();
 
@@ -43,20 +45,22 @@ public class Login extends Activity implements OnClickListener {
 	// or in mac's terminal type ifconfig and look for the ip under en0 or en1
 	// private static final String LOGIN_URL =
 	// "http://xxx.xxx.x.x:1234/webservice/login.php";
-
-	// testing on Emulator:
-	private static final String LOGIN_URL = "http://128.199.117.135/webservice/login.php";
+    private EditText user, pass;
 
 	// testing from a real server:
 	// private static final String LOGIN_URL =
 	// "http://www.mybringback.com/webservice/login.php";
-
-	// JSON element ids from repsonse of php script:
-	private static final String TAG_SUCCESS = "success";
-	private static final String TAG_MESSAGE = "message";
+	private Button mSubmit, mRegister;
+	// Progress Dialog
+	private ProgressDialog pDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //set content view AFTER ABOVE sequence (to avoid crash)
+        this.setContentView(R.layout.login);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
@@ -72,8 +76,11 @@ public class Login extends Activity implements OnClickListener {
 		// register listeners
 		mSubmit.setOnClickListener(this);
 		mRegister.setOnClickListener(this);
+        //Remove title bar
 
-	}
+
+
+    }
 
 	@Override
 	public void onClick(View v) {
